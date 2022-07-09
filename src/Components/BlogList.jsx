@@ -1,4 +1,5 @@
 import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
+import { Link } from 'react-router-dom';
 
 const BlogList = (props) => {
 
@@ -11,10 +12,12 @@ const BlogList = (props) => {
                 return (
                     <div className="blog-preview" key={blog.id}>
                         <div className='blog-content'>
-                            <h2>{blog.title}</h2>
-                            <p style={{color : "grey"}}>Written by: {blog.author}</p>
-                       </div>
-
+                            <Link to={`/create/${blog.id}`} style={{textDecoration:'none'}}>
+                                <h2>{blog.title}</h2>
+                                <p style={{color : "grey"}}>Written by: {blog.author}</p>
+                            </Link>
+                        </div>
+                        
                         <div style={{marginTop:'auto'}} onClick={() => {
                             props.handleDelete(blog.id);
                         }}> 

@@ -61,3 +61,13 @@ body{
 .blog-content{
   flex-grow: 1;
 }
+
+.blog-details h2{
+  font-size: 1.7em;
+  color: #f1356d;
+}
+
+.blog-details div{
+  margin: 20px 0;
+  color: grey;
+}

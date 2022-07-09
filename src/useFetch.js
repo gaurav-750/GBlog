@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 
 
 const useFetch = (url) => {
+    console.log("in usefetch:", url)
+    
     const [data, setData] = useState(null);
     const [isPending, setIsPending] = useState(true);
     const [error, setError] = useState('');
