@@ -5,6 +5,9 @@ import BlogList from "./BlogList";
 const Home = () => {
 
     const [blogs, setBlogs] = useState(null);
+    const [isPending, setIsPending] = useState(true);
+    const [error, setError] = useState('');
+
     const title = "All Blogs!";
 
     const handleDelete = (id) => {
@@ -20,10 +23,22 @@ const Home = () => {
         console.log('useEffect!');
 
         fetch('http://localhost:8000/blogs')
-            .then((res) => {return res.json()})
+            .then((res) => {
+                if (!res.ok) { //if the req.cannot be fetched, throw an error => it'll go in catch block
+                    throw Error("Oops! Could not fetch the request!");
+                }
+
+                return res.json();
+            })
             .then((data) => {
-                console.log('data', data);
+                // console.log('data', data);
                 setBlogs(data);
+                setIsPending(false);
+                setError(null);
+            })
+            .catch((err) => {
+                setError(err.message);
+                setIsPending(false);
             })
 
 
@@ -33,12 +48,16 @@ const Home = () => {
 
     return ( 
         <div className="home">
-            {blogs ?
+            {error && <div style={{color:"red"}}> {error} </div> } 
+
+            {isPending && <h1>Loading..</h1> }
+
+            {blogs &&
                 <BlogList 
                 blogs = {blogs}
                 title = {title}
                 handleDelete = {handleDelete}
-            /> : <h1>Loading..</h1>
+            />
             }
         </div>
      );
