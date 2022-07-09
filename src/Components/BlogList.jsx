@@ -1,4 +1,4 @@
-
+import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
 
 const BlogList = (props) => {
 
@@ -10,8 +10,16 @@ const BlogList = (props) => {
             {blogs.map((blog) => {
                 return (
                     <div className="blog-preview" key={blog.id}>
-                       <h2>{blog.title}</h2>
-                       <p style={{color : "grey"}}>Written by: {blog.author}</p>
+                        <div className='blog-content'>
+                            <h2>{blog.title}</h2>
+                            <p style={{color : "grey"}}>Written by: {blog.author}</p>
+                       </div>
+
+                        <div style={{marginTop:'auto'}} onClick={() => {
+                            props.handleDelete(blog.id);
+                        }}> 
+                            <DeleteForeverOutlinedIcon fontSize='large'/>
+                        </div>
                     </div>
                 )
             })}
