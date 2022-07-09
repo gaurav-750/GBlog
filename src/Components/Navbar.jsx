@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 
 const styles = {
     links : {
@@ -16,8 +17,8 @@ const Navbar = () => {
             <h1>The Gogo Blog</h1>
 
             <div className="links">
-                <a href="/" style={styles.links}>Home</a>
-                <a href="/create" style={styles.links} > New Blog</a>
+                <Link to="/" style={styles.links}>Home</Link>
+                <Link to="/create" style={styles.links} > New Blog</Link>
             </div>
 
         </nav>

@@ -2,7 +2,6 @@ import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined
 
 const BlogList = (props) => {
 
-    console.log('props:', props);
     const {blogs, title} = props;
 
     return (  
